@@ -1,0 +1,18 @@
+@if (control) {
+  <p-floatlabel variant="in">
+    <input
+      pInputText
+      [id]="controlName"
+      [formControl]="control"
+      autocomplete="off"
+      [class.ng-dirty]="isInvalid"
+      [class.ng-invalid]="isInvalid"
+    />
+    <label [for]="controlName">{{ label }}</label>
+  </p-floatlabel>
+  @if (isInvalid) {
+    <small class="p-error text-red-700">
+      {{ getErrorMessage() }}
+    </small>
+  }
+}
