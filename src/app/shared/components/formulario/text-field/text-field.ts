@@ -4,18 +4,21 @@ import { ControlContainer, ReactiveFormsModule, FormControl } from '@angular/for
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 
-const COMPONENTES_PRIME = [ReactiveFormsModule, CommonModule, FloatLabelModule, InputTextModule];
+const COMPONENTES_ANGULAR = [ReactiveFormsModule, CommonModule];
+const COMPONENTES_PRIME = [FloatLabelModule, InputTextModule];
 
 @Component({
   selector: 'connect-text-field',
-  imports: [...COMPONENTES_PRIME],
+  imports: [...COMPONENTES_ANGULAR, ...COMPONENTES_PRIME],
   templateUrl: './text-field.html',
   styleUrl: './text-field.css',
 })
 export class TextField {
-  @Input({ required: false }) controlName!: string;
-  @Input() label: string = '';
-  @Input() id: string = '';
+  @Input({ required: true }) tipo!: string;
+  @Input({ required: true }) label!: string;
+  @Input({ required: true }) maxLen!: number;
+  @Input({ required: true }) obrigatorio!: boolean;
+  @Input({ required: true }) controlName!: string;
 
   private container = inject(ControlContainer);
 
@@ -24,7 +27,14 @@ export class TextField {
   }
 
   get isInvalid(): boolean {
-    return !!(this.control && this.control.invalid && (this.control.dirty || this.control.touched));
+    if (this.obrigatorio) {
+      return !!(
+        this.control &&
+        this.control.invalid &&
+        (this.control.dirty || this.control.touched)
+      );
+    }
+    return false;
   }
 
   getErrorMessage(): string {

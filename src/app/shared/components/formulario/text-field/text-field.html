@@ -2,11 +2,16 @@
   <p-floatlabel variant="in">
     <input
       pInputText
+      fluid="true"
+      pSize="small"
+      [type]="tipo"
       [id]="controlName"
       [formControl]="control"
+      [maxLength]="maxLen"
       autocomplete="off"
       [class.ng-dirty]="isInvalid"
       [class.ng-invalid]="isInvalid"
+      [required]="obrigatorio"
     />
     <label [for]="controlName">{{ label }}</label>
   </p-floatlabel>
