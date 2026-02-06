@@ -1,0 +1,23 @@
+<div class="flex flex-col gap-1 w-full">
+  <p-floatlabel variant="in">
+    <p-autocomplete
+      [id]="controlName"
+      [formControl]="control"
+      [suggestions]="suggestions"
+      [optionLabel]="optionLabel"
+      [dropdown]="dropdown"
+      [minLength]="minLength"
+      [placeholder]="placeholder"
+      [fluid]="true"
+      (completeMethod)="handleSearch($event)"
+      [class.ng-dirty]="isInvalid"
+      [class.ng-invalid]="isInvalid"
+      appendTo="body"
+    />
+    <label [for]="controlName">{{ label }}</label>
+  </p-floatlabel>
+
+  @if (isInvalid) {
+    <small class="p-error text-red-700">Seleção ou preenchimento inválido.</small>
+  }
+</div>
