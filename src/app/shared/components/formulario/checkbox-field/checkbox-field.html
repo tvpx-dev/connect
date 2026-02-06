@@ -1,0 +1,20 @@
+<div class="flex flex-col gap-1">
+  <div class="flex items-center gap-2">
+    <p-checkbox
+      [formControl]="control"
+      [binary]="isBinary"
+      [value]="value"
+      [inputId]="label + controlName"
+      [disabled]="disabled"
+      [class.ng-dirty]="isInvalid"
+      [class.ng-invalid]="isInvalid"
+    />
+    <label [for]="label + controlName" class="cursor-pointer text-sm font-medium text-gray-700">
+      {{ label }}
+    </label>
+  </div>
+
+  @if (isInvalid) {
+    <small class="p-error text-red-700 ml-7">Seleção inválida.</small>
+  }
+</div>
