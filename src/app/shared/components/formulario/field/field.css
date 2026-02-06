@@ -1,0 +1,61 @@
+/* ********** CONFIGURAÇÃO DOS ICONES ********** */
+:host ::ng-deep .p-iconfield {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+:host ::ng-deep .p-iconfield-right > .p-inputicon {
+  right: 12px !important;
+  left: auto !important;
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin-top: 0 !important;
+}
+
+:host ::ng-deep .p-iconfield-left > .p-inputicon {
+  left: 12px !important;
+  right: auto !important;
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin-top: 0 !important;
+}
+
+:host ::ng-deep .p-floatlabel-in .p-inputtext {
+  padding-right: 2.5rem !important;
+}
+
+:host ::ng-deep .ng-invalid.ng-dirty ~ .p-inputicon {
+  color: #b91c1c !important;
+}
+
+:host ::ng-deep .p-iconfield:has(.ng-invalid.ng-dirty) .p-inputicon {
+  color: #b91c1c !important;
+}
+
+:host ::ng-deep .p-inputtext:focus ~ .p-inputicon {
+  color: var(--p-primary-color);
+}
+
+/* ********** CONFIGURAÇÃO PARA DATA ********** */
+:host ::ng-deep .p-datepicker {
+  width: 100%;
+}
+
+/* ********** CONFIGURAÇÃO SENHA ********** */
+:host ::ng-deep .p-password {
+  display: flex;
+  width: 100%;
+}
+
+:host ::ng-deep .p-password-toggle-mask-icon {
+  margin-right: 0.5rem;
+  z-index: 10;
+}
+
+:host ::ng-deep .p-password-input {
+  width: 100% !important;
+}

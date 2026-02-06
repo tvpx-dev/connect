@@ -1,0 +1,77 @@
+@if (control) {
+  <p-floatlabel variant="in">
+    @if (icone) {
+      <p-iconfield [iconPosition]="iconPos">
+        <p-inputicon [class]="icone" [class.text-red-700]="isInvalid" />
+        <ng-container *ngTemplateOutlet="fieldTpl" />
+      </p-iconfield>
+    } @else {
+      <ng-container *ngTemplateOutlet="fieldTpl" />
+    }
+    <label [for]="controlName">{{ label }}</label>
+  </p-floatlabel>
+  @if (isInvalid) {
+    <small class="p-error text-red-700">
+      {{ getErrorMessage() }}
+    </small>
+  }
+}
+
+<ng-template #fieldTpl>
+  @if (isData) {
+    <p-datepicker
+      [id]="controlName"
+      [formControl]="control"
+      [showIcon]="false"
+      [fluid]="true"
+      size="large"
+      variant="filled"
+      appendTo="body"
+      [class.ng-dirty]="isInvalid"
+      [class.ng-invalid]="isInvalid"
+      [showButtonBar]="true"
+    />
+  } @else if (isSenha) {
+    <p-password
+      [inputId]="controlName"
+      [formControl]="control"
+      [toggleMask]="true"
+      [feedback]="feedback"
+      [fluid]="true"
+      size="large"
+      promptLabel="Digite a senha"
+      weakLabel="Fraca"
+      mediumLabel="Média"
+      strongLabel="Forte"
+      [class.ng-dirty]="isInvalid"
+      [class.ng-invalid]="isInvalid"
+    />
+  } @else if (mask) {
+    <p-inputmask
+      [mask]="mask"
+      [unmask]="unmask"
+      [id]="controlName"
+      [formControl]="control"
+      [class.ng-dirty]="isInvalid"
+      [class.ng-invalid]="isInvalid"
+      fluid="true"
+      pSize="small"
+    />
+  } @else {
+    <input
+      pInputText
+      fluid="true"
+      pSize="small"
+      [type]="tipo"
+      [id]="controlName"
+      [formControl]="control"
+      [maxLength]="maxLen"
+      autocomplete="off"
+      [class.ng-dirty]="isInvalid"
+      [class.ng-invalid]="isInvalid"
+      [required]="obrigatorio"
+      [uppercase]="upperCase"
+      [lowercase]="lowerCase"
+    />
+  }
+</ng-template>
