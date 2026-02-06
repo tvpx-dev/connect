@@ -1,0 +1,23 @@
+<div class="flex flex-col gap-1 w-full">
+  <p-floatlabel variant="in">
+    <textarea
+      pInputTextarea
+      [id]="controlName"
+      [formControl]="control"
+      [rows]="rows"
+      [cols]="cols"
+      [autoResize]="autoResize"
+      [placeholder]="placeholder"
+      class="w-full"
+      [class.ng-dirty]="isInvalid"
+      [class.ng-invalid]="isInvalid"
+    ></textarea>
+    <label [for]="controlName">{{ label }}</label>
+  </p-floatlabel>
+
+  @if (isInvalid) {
+    <small class="p-error text-red-700">
+      {{ getErrorMessage() }}
+    </small>
+  }
+</div>
