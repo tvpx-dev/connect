@@ -1,0 +1,13 @@
+<div class="flex items-center gap-2">
+  <p-radiobutton
+    [formControl]="control"
+    [value]="value"
+    [disabled]="disabled"
+    [inputId]="controlName + value"
+    [class.ng-dirty]="isInvalid"
+    [class.ng-invalid]="isInvalid"
+  />
+  <label [for]="controlName + value" class="cursor-pointer text-sm font-medium text-gray-700">
+    {{ label }}
+  </label>
+</div>
